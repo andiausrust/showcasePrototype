@@ -37,6 +37,7 @@ export class HomePage implements OnInit {
 
     // 'time', 'source', 'processName'
     selection = new SelectionModel<EventsTableItem>(true, []);
+    selection2 = new SelectionModel<EventsTableItem>(true, []);
     expandedElement: EventsTableItem | null;
 
     constructor(private theme: ThemeService) {
@@ -57,6 +58,12 @@ export class HomePage implements OnInit {
         return numSelected === numRows;
     }
 
+    isAllSelected2() {
+        const numSelected = this.selection2.selected.length;
+        const numRows = this.dataSource2.data.length;
+        return numSelected === numRows;
+    }
+
     /** Selects all rows if they are not all selected; otherwise clear selection. */
     masterToggle() {
         this.isAllSelected() ?
@@ -64,10 +71,23 @@ export class HomePage implements OnInit {
             this.dataSource.data.forEach(row => this.selection.select(row));
     }
 
+    masterToggle2() {
+        this.isAllSelected2() ?
+            this.selection2.clear() :
+            this.dataSource2.data.forEach(row => this.selection2.select(row));
+    }
+
     /** The label for the checkbox on the passed row */
     checkboxLabel(row?: EventsTableItem): string {
         if (!row) {
             return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
+        }
+        return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
+    }
+
+    checkboxLabel2(row?: EventsTableItem): string {
+        if (!row) {
+            return `${this.isAllSelected2() ? 'select' : 'deselect'} all`;
         }
         return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
     }
