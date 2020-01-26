@@ -174,7 +174,7 @@
                         <ng-container matColumnDef="select">
                             <th mat-header-cell *matHeaderCellDef>
                                 <mat-checkbox (change)="$event ? masterToggle2() : null"
-                                              [checked]="selection.hasValue() && isAllSelected2()"
+                                              [checked]="selection2.hasValue() && isAllSelected2()"
                                               [indeterminate]="selection2.hasValue() && !isAllSelected2()"
                                               [aria-label]="checkboxLabel2()">
                                 </mat-checkbox>
