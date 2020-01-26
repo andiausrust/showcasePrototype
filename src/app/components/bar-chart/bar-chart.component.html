@@ -1,0 +1,19 @@
+<ion-card class="bar-chart">
+
+    <ion-item lines="none">
+        <ion-label>Line chart/Bar chart</ion-label>
+        <ion-toggle (ionChange)="typeChanged($event)"></ion-toggle>
+    </ion-item>
+
+    <ion-card-content>
+        <canvas baseChart
+                [chartType]="chartType"
+                [datasets]="chartData"
+                [labels]="chartLabels"
+                [colors]="chartColors"
+                [options]="chartOptions"
+                [legend]="showLegend"
+        ></canvas>
+    </ion-card-content>
+</ion-card>
+<app-sass-helpers></app-sass-helpers>

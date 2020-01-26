@@ -1,0 +1,18 @@
+<ion-card class="doghnut-chart">
+
+  <ion-item lines="none">
+    <ion-label>Activity Breakdown</ion-label>
+  </ion-item>
+
+  <ion-card-content>
+      <canvas baseChart
+              [chartType]="doughnutChartType"
+              [data]="doughnutChartData"
+              [labels]="doughnutChartLabels"
+              [legend]="showLegend"
+              [options]="chartOptions"
+              [colors]="chartColors"
+      ></canvas>
+  </ion-card-content>
+
+</ion-card>

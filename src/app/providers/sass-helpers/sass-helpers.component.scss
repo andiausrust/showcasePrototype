@@ -1,0 +1,22 @@
+@import './src/theme/variables';
+
+$prefix: "--"; //Prefix string for custom CSS properties
+
+/** chart colors **/
+$background-color: #bc5090;
+
+//Merges a variable name with $prefix
+@function custom-property-name($name) {
+  @return $prefix + $name;
+}
+
+// Defines a custom property
+@mixin define-custom-property($name, $value) {
+  #{custom-property-name($name)}: $value;
+}
+
+body {
+
+  // Append SASS variables which are desired to be accessible:
+  @include define-custom-property('background-color', $background-color);
+}
